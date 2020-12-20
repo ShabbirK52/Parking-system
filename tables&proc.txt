@@ -1,0 +1,57 @@
+
+create table Parking ( 
+    sr_no int, 
+    vehicle_no varchar(12) primary key, 
+    dt_of_entry timestamp default current_timestamp,
+    status varchar(1) default 'P'
+);
+
+
+ 
+insert into Parking(sr_no, vehicle_no) values(1, 'mh12 ab 1234');
+insert into Parking values(1, 'MH12 ab 5253', ' 2020-12-19 09:34:25', 'P'), (1, 'MH12 ab 7272', ' 2020-12-19 12:35:25', 'P');
+select * from Parking;
+
+create table Bill (
+    sr_no int auto increment primary key, 
+    vehicle_no varchar(12), 
+    dt_of_exit timestamp default current_timestamp,
+    bill int 
+);
+
+
+        
+select * from Parking;
+select * from Bill;
+
+
+DELIMITER //
+
+CREATE PROCEDURE project.cal (IN vh_no varchar(12))
+    BEGIN
+        DECLARE entry timestamp;     
+        DECLARE ext timestamp;     
+        DECLARE diff int;     
+        DECLARE Fine int;
+
+        SELECT dt_of_entry INTO entry from Parking where vehicle_no = vh_no;     
+        SET ext = current_timestamp;         
+        SET diff = HOUR(TIMEDIFF(TIME(ext), TIME(entry)));         
+            
+        if(diff <= 1 ) Then     
+            SET Fine = 5;    
+            INSERT INTO Bill(vehicle_no, dt_of_exit, bill) VALUES(vh_no, ext, Fine);     
+                
+        Else      
+            SET Fine = diff * 10;     
+            INSERT INTO Bill(vehicle_no, dt_of_exit, bill) VALUES(vh_no, ext, Fine);     
+                
+        end if;             
+            
+        UPDATE Parking Set Status = 'L' WHERE vehicle_no = vh_no;     
+        
+End //
+
+DELIMITER ;
+
+call cal ('mh12 ab 4321');
