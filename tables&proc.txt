@@ -34,7 +34,7 @@ CREATE PROCEDURE project.cal (IN vh_no varchar(12))
         DECLARE diff int;     
         DECLARE Fine int;
 
-        SELECT dt_of_entry INTO entry from Parking where vehicle_no = vh_no;     
+        SELECT dt_of_entry INTO entry from Parking where vehicle_no = vh_no and status = 'P';     
         SET ext = current_timestamp;         
         SET diff = HOUR(TIMEDIFF(TIME(ext), TIME(entry)));         
             

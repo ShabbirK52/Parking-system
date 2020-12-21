@@ -14,10 +14,10 @@ public class View implements ActionListener{
     JLabel srNo, vhNo, timeOfEntry, status;
 
     public View (){
-        f = new JFrame("Exit Parking");
+        f = new JFrame("Details");
         f.setBackground(Color.LIGHT_GRAY);
         f.setLayout(null);
-        details = new JLabel("Exit from Parking");
+        details = new JLabel("Vehicle Details");
         details.setFont(new Font("serif",Font.ITALIC,25));
         details.setBounds(150,30,200,40);
         f.add(details);
@@ -82,7 +82,7 @@ public class View implements ActionListener{
             try{
                 Conn con = new Conn();
                 getVhNo();
-                String str = "select sr_no, vehicle_no, dt_of_entry, status from Parking where vehicle_no = '"+VehicleNumber.vhNo+"';";
+                String str = "select sr_no, vehicle_no, dt_of_entry, status from Parking where vehicle_no = '"+VehicleNumber.vhNo+"' and status = 'P';";
                 ResultSet rs = con.s.executeQuery(str);
                 
                 Boolean found = false;

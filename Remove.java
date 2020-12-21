@@ -7,6 +7,7 @@ import javax.swing.*;
 public class Remove implements ActionListener{
     JFrame f;
     JButton search;
+    JButton delete;
     JButton back;
     static JTextField vehicleNo = new JTextField();
     JLabel details;
@@ -61,10 +62,16 @@ public class Remove implements ActionListener{
         status.setBounds(70, 360, 350, 30);
         f.add(status);
 
+        delete= new JButton("Get Bill");
+        delete.setBounds(205,410,90,30);
+        f.add(delete);
+        delete.addActionListener(this);
+
         srNo.setVisible(false);
         vhNo.setVisible(false);
         timeOfEntry.setVisible(false);
         status.setVisible(false);
+        delete.setVisible(false);
         
         f.setVisible(true);
         f.setSize(500,500);
@@ -81,7 +88,7 @@ public class Remove implements ActionListener{
             try{
                 Conn con = new Conn();
                 getVhNo();
-                String str = "select sr_no, vehicle_no, dt_of_entry, status from Parking where vehicle_no = '"+VehicleNumber.vhNo+"';";
+                String str = "select sr_no, vehicle_no, dt_of_entry, status from Parking where vehicle_no = '"+VehicleNumber.vhNo+"' and status = 'P';";
                 ResultSet rs = con.s.executeQuery(str);
                 
                 Boolean found = false;
@@ -96,7 +103,7 @@ public class Remove implements ActionListener{
                     vhNo.setVisible(true);
                     timeOfEntry.setVisible(true);
                     status.setVisible(true);
-
+                    delete.setVisible(true);
                 }
                 if(!found) {
                     JOptionPane.showMessageDialog(null,"Vehicle not found");
@@ -112,10 +119,25 @@ public class Remove implements ActionListener{
             new Details();
             f.setVisible(false);
         }
+
+        else if(ae.getSource() == delete) {
+            try {
+                Conn con = new Conn();
+                CallableStatement cStmt = con.con.prepareCall("{call cal(?)}");
+                cStmt.setString(1, VehicleNumber.vhNo);
+                cStmt.execute();
+            } catch(Exception e) {
+                System.out.println("Error: " + e);
+            }
+
+
+            f.setVisible(false);
+            new Bill();
+        }
     }
 
     public static void main(String[] args) {
-        new View();
+        new Remove();
     }
 }
     
