@@ -7,7 +7,7 @@ import java.awt.event.*;
 class Details  implements ActionListener{
 
     JFrame f;
-    JLabel l1,l2;
+    JLabel l1;
     JButton b1,b2,b3,b4;
     final String font = "serif";
 
@@ -16,47 +16,41 @@ class Details  implements ActionListener{
         f.setBackground(Color.lightGray);
         f.setLayout(null);
 
-        l1 = new JLabel();
-        l1.setBounds(0,0,700,500);
-        l1.setLayout(null);
-        //ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("Employeee/icons/details.jpg"));
-      //  l1.setIcon(i1);
+
+        l1 = new JLabel("HOME PAGE");
+        l1.setBounds(150,20,250,90);
+        l1.setFont(new Font(font,Font.BOLD,25));
+        l1.setForeground(Color.black);
         f.add(l1);
 
-        l2 = new JLabel("Member Details");
-        l2.setBounds(412,20,250,90);
-        l2.setFont(new Font(font,Font.BOLD,25));
-        l2.setForeground(Color.black);
-        l1.add(l2);
-
         b1=new JButton("Add");
-        b1.setBounds(420,80,100,40);
+        b1.setBounds(175,140,100,40);
         b1.setFont(new Font(font,Font.BOLD,15));
         b1.addActionListener(this);
-        l1.add(b1);
+        f.add(b1);
 
 
         b2=new JButton("View");
-        b2.setBounds(530,80,100,40);
+        b2.setBounds(175,220,100,40);
         b2.setFont(new Font(font,Font.BOLD,15));
         b2.addActionListener(this);
-        l1.add(b2);
+        f.add(b2);
 
         b3=new JButton("Remove");
-        b3.setBounds(420,140,100,40);
+        b3.setBounds(175,300,100,40);
         b3.setFont(new Font(font,Font.BOLD,15));
         b3.addActionListener(this);
-        l1.add(b3);
+        f.add(b3);
 
-        b4=new JButton("Update");
-        b4.setBounds(530,140,100,40);
+        b4=new JButton("New table");
+        b4.setBounds(175,380,100,40);
         b4.setFont(new Font(font,Font.BOLD,15));
         b4.addActionListener(this);
-        l1.add(b4);
+        f.add(b4);
 
         f.setVisible(true);
-        f.setSize(700,500);
-        f.setLocation(450,200);
+        f.setSize(500,500);
+        f.setLocation(450,150);
 
     }
 
@@ -67,20 +61,29 @@ class Details  implements ActionListener{
             f.setVisible(false);
             new Add();
         }
-        if(ae.getSource()==b2)
+        else if(ae.getSource()==b2)
         {
             f.setVisible(false);
-            
+            new View();
         }
-        if(ae.getSource()==b3)
+        else if(ae.getSource()==b3)
         {
             f.setVisible(false);
             new Remove();
         }
          if(ae.getSource()==b4)
         {
-            f.setVisible(false);
-            
+            try{
+                Conn con = new Conn();
+                String q1 = "truncate table Parking;";
+                String q2 = "truncate table Bill;";
+                con.s.executeUpdate(q1);
+                con.s.executeUpdate(q2);
+    
+                JOptionPane.showMessageDialog(null,"All tables cleared");
+            } catch(Exception e) {
+                System.out.println("Error: "+e);
+            }
         }
        
     }

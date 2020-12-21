@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class Remove implements ActionListener{
+public class View implements ActionListener{
     JFrame f;
     JButton search;
     JButton back;
@@ -13,7 +13,7 @@ public class Remove implements ActionListener{
     JLabel vn;
     JLabel srNo, vhNo, timeOfEntry, status;
 
-    public Remove(){
+    public View (){
         f = new JFrame("Exit Parking");
         f.setBackground(Color.LIGHT_GRAY);
         f.setLayout(null);
@@ -60,6 +60,7 @@ public class Remove implements ActionListener{
         status.setFont(new Font("serif",Font.BOLD,20));
         status.setBounds(70, 360, 350, 30);
         f.add(status);
+
 
         srNo.setVisible(false);
         vhNo.setVisible(false);
@@ -112,6 +113,7 @@ public class Remove implements ActionListener{
             new Details();
             f.setVisible(false);
         }
+
     }
 
     public static void main(String[] args) {
