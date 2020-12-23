@@ -36,7 +36,7 @@ class Details  implements ActionListener{
         b2.addActionListener(this);
         f.add(b2);
 
-        b3=new JButton("Remove");
+        b3=new JButton("Exit");
         b3.setBounds(200,300,100,40);
         b3.setFont(new Font(font,Font.BOLD,15));
         b3.addActionListener(this);

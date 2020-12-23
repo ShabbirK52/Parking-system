@@ -38,8 +38,10 @@ public class NewTable implements ActionListener{
                 Conn con = new Conn();
                 String q1 = "truncate table Parking;";
                 String q2 = "truncate table Bill;";
+                String q3 = "truncate table seq;";
                 con.s.executeUpdate(q1);
                 con.s.executeUpdate(q2);
+                con.s.executeUpdate(q3);
     
                 JOptionPane.showMessageDialog(null,"All tables cleared");
             } catch(Exception e) {
