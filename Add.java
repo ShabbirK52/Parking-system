@@ -2,6 +2,7 @@
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
+import java.sql.SQLIntegrityConstraintViolationException;
 
 public class Add implements ActionListener{
     
@@ -64,6 +65,9 @@ public class Add implements ActionListener{
             }catch(Exception ee){
                 System.out.println("The error is:"+ee);
                 System.out.println(vh_no);
+                if(ee instanceof SQLIntegrityConstraintViolationException){
+                    JOptionPane.showMessageDialog(null,"Integrity costraint violated");
+                }
             }
         }else if(ae.getSource() == b2){
             f.setVisible(false);
