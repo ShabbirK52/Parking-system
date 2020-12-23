@@ -73,17 +73,8 @@ class Details  implements ActionListener{
         }
          if(ae.getSource()==b4)
         {
-            try{
-                Conn con = new Conn();
-                String q1 = "truncate table Parking;";
-                String q2 = "truncate table Bill;";
-                con.s.executeUpdate(q1);
-                con.s.executeUpdate(q2);
-    
-                JOptionPane.showMessageDialog(null,"All tables cleared");
-            } catch(Exception e) {
-                System.out.println("Error: "+e);
-            }
+            f.setVisible(false);
+            new NewTable();
         }
        
     }
