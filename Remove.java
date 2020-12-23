@@ -8,7 +8,7 @@ public class Remove implements ActionListener{
     JFrame f;
     JButton search;
     JButton delete;
-    JButton back;
+    JButton cancel;
     static JTextField vehicleNo = new JTextField();
     JLabel details;
     JLabel vn;
@@ -35,12 +35,12 @@ public class Remove implements ActionListener{
         search.setBounds(150,150,90,30);
         f.add(search);
 
-        back = new JButton("Back");
-        back.setBounds(260,150,90,30);
-        f.add(back);
+        cancel = new JButton("Cancel");
+        cancel.setBounds(260,150,90,30);
+        f.add(cancel);
 
         search.addActionListener(this);
-        back.addActionListener(this);
+        cancel.addActionListener(this);
 
         srNo = new JLabel("Sr_no: ");
         srNo.setFont(new Font("serif",Font.BOLD,20));
@@ -115,7 +115,7 @@ public class Remove implements ActionListener{
             }
         }
 
-        else if(ae.getSource() == back) {
+        else if(ae.getSource() == cancel) {
             new Details();
             f.setVisible(false);
         }

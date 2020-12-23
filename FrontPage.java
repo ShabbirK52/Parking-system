@@ -9,10 +9,12 @@ public class FrontPage implements ActionListener{
 
     FrontPage() {
         f = new JFrame("PAY'N PARK");
+        f.setBackground(Color.LIGHT_GRAY);
         f.setLayout(null);
         f.setSize(500,500);
         JLabel title = new JLabel("PAY'N PARK");
         title.setFont(new Font("serif",Font.ITALIC, 50));
+        title.setForeground(Color.DARK_GRAY);
         title.setBounds(115,100,400,100);
         f.add(title);
 

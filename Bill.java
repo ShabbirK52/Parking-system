@@ -6,7 +6,7 @@ import javax.swing.*;
 //
 public class Bill implements ActionListener{
     JFrame f;
-    JLabel srNo, vhNo, timeOfExit, bill;
+    JLabel srNo, vhNo, timeOfExit, bill, hours;
     JLabel details;
     JButton back;
 
@@ -15,6 +15,7 @@ public class Bill implements ActionListener{
         srNo = new JLabel("Sr_no: ");
         vhNo = new JLabel("Vehicle No.: ");
         timeOfExit = new JLabel("Exit Time: ");
+        hours = new JLabel("Hours: ");
         bill = new JLabel("Bill: ");
         
         try{
@@ -27,7 +28,8 @@ public class Bill implements ActionListener{
                 srNo = new JLabel("Sr_no: " + rs.getString(1));
                 vhNo = new JLabel("Vehicle No.: "+rs.getString(2));
                 timeOfExit = new JLabel("Exit Time: "+rs.getString(3));
-                bill = new JLabel("Bill: "+rs.getString(4));
+                hours = new JLabel("Hours: "+rs.getString(4));
+                bill = new JLabel("Bill: "+rs.getString(5));
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -57,13 +59,16 @@ public class Bill implements ActionListener{
         timeOfExit.setBounds(70, 220, 300, 30);
         f.add(timeOfExit);
 
+        hours.setFont(new Font("serif",Font.BOLD,20));
+        hours.setBounds(70, 280, 270, 30);
+        f.add(hours);
         
         bill.setFont(new Font("serif",Font.BOLD,20));
-        bill.setBounds(70, 280, 270, 30);
+        bill.setBounds(70, 340, 270, 30);
         f.add(bill);
 
         back = new JButton("Back");
-        back.setBounds(200, 340, 80, 30);
+        back.setBounds(200, 410, 80, 30);
         back.addActionListener(this);
         f.add(back);
 
