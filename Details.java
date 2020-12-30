@@ -23,7 +23,7 @@ class Details  implements ActionListener{
         l1.setForeground(Color.black);
         f.add(l1);
 
-        b1=new JButton("Add");
+        b1=new JButton("Enter");
         b1.setBounds(200,140,100,40);
         b1.setFont(new Font(font,Font.BOLD,15));
         b1.addActionListener(this);
@@ -73,7 +73,6 @@ class Details  implements ActionListener{
         }
          if(ae.getSource()==b4)
         {
-            f.setVisible(false);
             new NewTable();
         }
        

@@ -10,10 +10,6 @@ create table Parking (
     primary key (vehicle_no, status)
 );
 
-insert into Parking(vehicle_no, dt_of_entry) values('MH12 AB 1234', '2020-12-23 10:00:00'),
-('MH12 AB 1111', '2020-12-23 12:20:53'),
-('MH12 AB 2222', '2020-12-23 13:30:00');
-
 DELIMITER $$
 CREATE TRIGGER tg_Parking_insert
 BEFORE INSERT ON Parking
@@ -24,10 +20,10 @@ BEGIN
 END$$
 DELIMITER ;
 
-
+insert into Parking(vehicle_no, dt_of_entry) values('MH12 AB 1234', '2020-12-30 09:05:00'),
+ ('MH12 AB 1111', '2020-12-30 06:20:53'),
+ ('MH12 AB 2222', '2020-12-30 07:30:00');
  
-insert into Parking(sr_no, vehicle_no) values(1, 'mh12 ab 1234');
-insert into Parking values(1, 'MH12 ab 5253', ' 2020-12-19 09:34:25', 'P'), (1, 'MH12 ab 7272', ' 2020-12-19 12:35:25', 'P');
 select * from Parking;
 
 create table Bill (
