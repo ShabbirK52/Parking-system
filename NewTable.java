@@ -48,7 +48,6 @@ public class NewTable implements ActionListener{
                 System.out.println("Error: "+e);
             }
             f.setVisible(false);
-            new Details();
         }
         else if(ae.getSource() == no) {
             f.setVisible(false);

@@ -1,6 +1,11 @@
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import java.awt.*;
 import javax.swing.*;
+
+import org.junit.Test;
+
 import java.awt.event.*;
 import java.sql.SQLIntegrityConstraintViolationException;
 
@@ -74,6 +79,9 @@ public class Add implements ActionListener{
             new Details();
         }
     }
+
+    @Test
+    
 
     public static void main(String[ ] arg){
         new Add();
