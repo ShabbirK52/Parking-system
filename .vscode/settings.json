@@ -3,5 +3,10 @@
         "lib/**/*.jar",
         "c:\\Program Files (x86)\\MySQL\\Connector J 8.0\\mysql-connector-java-8.0.22.jar",
         "f:\\SHABBIR\\Java\\junit-platform-console-standalone-1.7.0-M1.jar"
-    ]
+    ],
+    "java.project.sourcePaths": [
+        "test files",
+        ""
+    ],
+    "java.dependency.packagePresentation": "hierarchical"
 }
